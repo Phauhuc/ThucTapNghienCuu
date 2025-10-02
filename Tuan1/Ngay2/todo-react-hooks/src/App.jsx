@@ -1,3 +1,4 @@
+import React from 'react'
 import TodoApp from './components/TodoApp'
 
 export default function App(){
@@ -8,7 +9,7 @@ export default function App(){
         <TodoApp />
       </main>
       <footer>
-        <small>Built with React Hooks • Simple Todo example</small>
+        <small>React Hooks</small>
       </footer>
     </div>
   )

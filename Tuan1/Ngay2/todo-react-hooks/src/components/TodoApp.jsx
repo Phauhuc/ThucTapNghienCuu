@@ -1,11 +1,5 @@
-import { useState, useRef, useMemo } from 'react'
+import React, { useState, useRef, useMemo } from 'react'
 import useLocalStorage from '../hooks/useLocalStorage'
-
-// Simple Todo app using hooks:
-// - add / toggle / edit / delete
-// - persisted to localStorage via custom hook
-// - input focus with useRef
-// - remaining count via useMemo
 
 function TodoItem({ todo, onToggle, onEdit, onDelete }){
   const [editing, setEditing] = useState(false)
@@ -14,14 +8,12 @@ function TodoItem({ todo, onToggle, onEdit, onDelete }){
 
   function startEdit(){
     setEditing(true)
-    // focus next tick
     setTimeout(() => inputRef.current && inputRef.current.focus(), 0)
   }
 
   function saveEdit(){
     const trimmed = text.trim()
     if(trimmed.length === 0){
-      // delete if empty
       onDelete(todo.id)
     } else {
       onEdit(todo.id, trimmed)
@@ -90,10 +82,6 @@ export default function TodoApp(){
     setTodos(prev => prev.filter(t => t.id !== id))
   }
 
-  function clearCompleted(){
-    setTodos(prev => prev.filter(t => !t.completed))
-  }
-
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
     if(!q) return todos
@@ -113,7 +101,6 @@ export default function TodoApp(){
         <input placeholder="Search..." value={query} onChange={e => setQuery(e.target.value)} />
         <div className="left-info">{remaining} remaining</div>
         <button className="btn small" onClick={() => { setTodos([]) }}>Clear All</button>
-        <button className="btn small" onClick={clearCompleted}>Clear Completed</button>
       </div>
 
       <ul className="todo-list">
@@ -127,10 +114,6 @@ export default function TodoApp(){
           />
         )}
       </ul>
-
-      <div className="hint">
-        <small>Double-click a todo or press Edit to change. Press Enter to save.</small>
-      </div>
     </section>
   )
 }
