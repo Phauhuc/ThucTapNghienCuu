@@ -1,13 +1,13 @@
+
 import React from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 export default function Login({ onLogin }){
-  const navigate = useNavigate()
+  const navigate = useNavigate()  //
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
 
   function handleLogin(){
-    // fake login
     onLogin({ name: 'DemoUser' })
     navigate(from, { replace: true })
   }
@@ -20,3 +20,5 @@ export default function Login({ onLogin }){
     </div>
   )
 }
+
+

@@ -19,7 +19,6 @@ export default function useLocalStorage(key, initialValue){
     }
   }, [key, state])
 
-  // new setter that writes to localStorage synchronously
   const setAndPersist = useCallback((valueOrUpdater) => {
     setState(prev => {
       const next = typeof valueOrUpdater === 'function' ? valueOrUpdater(prev) : valueOrUpdater

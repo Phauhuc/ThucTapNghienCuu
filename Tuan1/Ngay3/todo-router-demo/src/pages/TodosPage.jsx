@@ -1,4 +1,4 @@
-// src/pages/TodosPage.jsx
+
 import React, { useState, useMemo, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useLocalStorage from '../hooks/useLocalStorage'
@@ -8,17 +8,16 @@ export default function TodosPage(){
   const [todos, setTodos] = useLocalStorage('todos_v1', [])
   const [query, setQuery] = useState('')
   const inputRef = useRef(null)
-  const navigate = useNavigate()
+  const navigate = useNavigate() //
 
-  // chỉ phần liên quan trong TodosPage.jsx
   function addTodoSync(text){
     const trimmed = text.trim()
     if (!trimmed) return null
     const newTodo = { id: Date.now().toString(), text: trimmed, completed: false }
-    const next = [newTodo, ...todos]    // todos là state hiện tại (synchronous read)
-    setTodos(next)                      // cập nhật state React
+    const next = [newTodo, ...todos]    
+    setTodos(next)                    
     try {
-      localStorage.setItem('todos_v1', JSON.stringify(next)) // persist ngay
+      localStorage.setItem('todos_v1', JSON.stringify(next)) 
     } catch (err) {
       console.error('localStorage write failed', err)
     }
@@ -31,7 +30,7 @@ export default function TodosPage(){
     const created = addTodoSync(value)
     e.target.reset()
     inputRef.current?.focus()
-    if (created) navigate(`/todos/${created.id}`, { state: { todo: created, from: '/todos' } })
+    if (created) navigate(`/todos/${created.id}`, { state: { todo: created, from: '/todos' } }) //
   }
 
 

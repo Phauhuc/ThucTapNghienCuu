@@ -1,4 +1,4 @@
-// src/pages/TodoDetail.jsx
+
 import React from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom'
 import useLocalStorage from '../hooks/useLocalStorage'
@@ -7,9 +7,7 @@ export default function TodoDetail(){
   const { id } = useParams()
   const location = useLocation()
   const [todos] = useLocalStorage('todos_v1', [])
-  // find in persisted todos
   const todoFromStorage = todos.find(t => t.id === id)
-  // fallback to router state (if we navigated immediately after creating)
   const todo = todoFromStorage || location.state?.todo
 
   if(!todo) {
@@ -32,3 +30,5 @@ export default function TodoDetail(){
     </div>
   )
 }
+
+

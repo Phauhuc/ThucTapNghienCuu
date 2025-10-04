@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Outlet, Link, NavLink } from 'react-router-dom'
 
@@ -15,9 +16,15 @@ export default function MainLayout({ user, onLogout }){
         </nav>
       </header>
       <main>
-        <Outlet />
+        <Outlet /> 
       </main>
-      <footer><small>Demo: BrowserRouter + Routes + Link + NavLink + Navigate + useNavigate + useParams + useLocation + Outlet</small></footer>
+      <footer>
+        <small>
+        Demo: BrowserRouter + Routes + Link + NavLink + Navigate + useNavigate + useParams + useLocation + Outlet
+        </small>
+      </footer>
     </div>
   )
 }
+
+
