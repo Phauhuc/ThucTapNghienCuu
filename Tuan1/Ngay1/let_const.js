@@ -1,3 +1,4 @@
+
 // Ví dụ về let
 let x = 5; 
 console.log(x); 
@@ -15,3 +16,5 @@ console.log(array);
 
 array.push("d");
 console.log(array); 
+
+

@@ -37,6 +37,7 @@ api.defaults.adapter = function(config){
   function respond(status, body){
     return { status, statusText: status === 200 ? 'OK' : 'Error', config, headers:{}, data: body }
   }
+  
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       try {
